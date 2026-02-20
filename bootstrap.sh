@@ -9,11 +9,11 @@ echo "Leyendo configuración desde $TFVARS_FILE..."
 # 2. Extraemos las variables automáticamente (quitando espacios y comillas)
 PROJECT_ID=$(grep '^project_id' $TFVARS_FILE | awk -F'=' '{print $2}' | tr -d ' "' | tr -d '\r')
 REGION=$(grep '^region' $TFVARS_FILE | awk -F'=' '{print $2}' | tr -d ' "' | tr -d '\r')
-STATE_BUCKET_NAME=$(grep '^app_bucket_name' $TFVARS_FILE | awk -F'=' '{print $2}' | tr -d ' "' | tr -d '\r')
+STATE_BUCKET_NAME=$(grep '^state_bucket_name' $TFVARS_FILE | awk -F'=' '{print $2}' | tr -d ' "' | tr -d '\r')
 
 # Validamos que no estén vacías por si el cliente olvidó llenarlas
 if [ -z "$PROJECT_ID" ] || [ -z "$STATE_BUCKET_NAME" ]; then
-    echo "Error: No se pudo leer project_id o app_bucket_name del archivo .tfvars"
+    echo "Error: No se pudo leer project_id o state_bucket_name del archivo .tfvars"
     exit 1
 fi
 

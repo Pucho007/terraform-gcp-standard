@@ -5,7 +5,7 @@ provider "google" {
 
 # 2. Llamada al Módulo VPC
 module "red_cliente" {
-  source      = "../../modules/vpc"
+  source      = "../modules/vpc"
   project_id  = var.project_id
   region      = var.region
   vpc_name    = var.vpc_name
@@ -14,7 +14,7 @@ module "red_cliente" {
 
 # 3. Llamada al Módulo Storage
 module "almacenamiento_cliente" {
-  source        = "../../modules/storage"
+  source        = "../modules/storage"
   project_id    = var.project_id
   region        = var.region
   bucket_name   = var.app_bucket_name
@@ -23,7 +23,7 @@ module "almacenamiento_cliente" {
 
 # 4. Llamada al Módulo BigQuery (Dataset)
 module "datos_cliente" {
-  source        = "../../modules/bigquery"
+  source        = "../modules/bigquery"
   project_id    = var.project_id
   region        = var.region
   dataset_name  = var.dataset_name
