@@ -20,4 +20,7 @@ terraform {
       version = "7.20.0"
     }
   }
+  backend "gcs" {
+    prefix = "terraform/state/env"
+  }
 }
