@@ -20,7 +20,7 @@ fi
 echo "Iniciando preparación para el proyecto: $PROJECT_ID en $REGION"
 
 # 3. Crear el bucket de estado si no existe
-if gcloud storage ls gs://$STATE_BUCKET_NAME --project=$PROJECT_ID >/dev/null 2>&1; then
+if gcloud storage ls gs://$STATE_BUCKET_NAME --project=$PROJECT_ID >/null 2>&1; then
     echo "El bucket de estado ($STATE_BUCKET_NAME) ya existe. Saltando creación..."
 else
     echo "Creando bucket de estado: $STATE_BUCKET_NAME..."
@@ -29,8 +29,8 @@ else
 fi
 
 # 4. Iniciar Terraform
-echo "🛠️ Inicializando Terraform..."
-cd environments/dev
+echo "Inicializando Terraform..."
+cd environments/
 terraform init
 
 echo "¡Entorno listo! Ya puedes ejecutar 'terraform plan' y 'terraform apply'."
