@@ -5,6 +5,7 @@ resource "google_storage_bucket" "app_storage" {
   storage_class            = "STANDARD"
   force_destroy            = false
   public_access_prevention = "enforced"
+  uniform_bucket_level_access = true
   labels                   = var.common_labels
 
   versioning {
