@@ -3,15 +3,6 @@ provider "google" {
   region  = var.region
 }
 
-# 2. Llamada al Módulo VPC
-module "red_cliente" {
-  source      = "../modules/vpc"
-  project_id  = var.project_id
-  region      = var.region
-  vpc_name    = var.vpc_name
-  subnet_name = "${var.vpc_name}-subnet-01"
-}
-
 # 3. Llamada al Módulo Storage
 module "almacenamiento_cliente" {
   source        = "../modules/storage"

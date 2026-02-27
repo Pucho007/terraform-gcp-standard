@@ -3,20 +3,20 @@ project_id        = "terraform-test-488010"
 region            = "us-central1"
 
 # Nombre bucket para albergar archivo de configuracion de terraform
-state_bucket_name = "bucket-terraform-state-test-7"
+state_bucket_name = "bucket-terraform-state-test-8"
 
 # Nombre de bucket de cloud storage
-app_bucket_name   = "bucket-terraform-test-7" 
+app_bucket_name   = "bucket-terraform-test-8" 
 
 # Dataset de Bigquery (no usar guiones)
-dataset_name      = "dataset_terraform_test_7"
+dataset_name      = "dataset_terraform_test_8"
 
 
 # Variables para la Orquestación
 # Variables para Workflow
-workflow_name         = "flujo-procesamiento-vooxell_7"
-workflow_sa_id        = "robot-workflow-vooxell_7"
+workflow_name         = "flujo-procesamiento-vooxell_8"
+workflow_sa_id        = "robot-workflow-vooxell_8"
 
 # Variables para Eventarc
-eventarc_trigger_name = "trigger-archivos-bucket_7"
-eventarc_sa_id        = "robot-eventarc-vooxell_7"
+eventarc_trigger_name = "trigger-archivos-bucket_8"
+eventarc_sa_id        = "robot-eventarc-vooxell_8"
