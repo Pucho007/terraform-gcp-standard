@@ -30,6 +30,12 @@ resource "google_workflows_workflow" "flujo_vooxell" {
   service_account = google_service_account.workflow_sa.email
   source_contents = file(var.workflow_yaml_path) 
   
+  # Variables usadas en el yaml
+  source_contents = templatefile(var.workflow_yaml_path, {
+    mi_dataset_inyectado = var.dataset_id
+    mi_tabla_inyectada   = var.table_id
+  })
+
   depends_on = [
     google_project_iam_member.wf_storage_viewer,
     google_project_iam_member.wf_bq_editor,

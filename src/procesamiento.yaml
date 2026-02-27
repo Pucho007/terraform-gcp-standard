@@ -6,8 +6,8 @@ main:
           - nombre_archivo: '${event.data.name}'
           - nombre_bucket: '${event.data.bucket}'
           - project_id: '${sys.get_env("GOOGLE_CLOUD_PROJECT_ID")}'
-          - dataset_id: "tu_dataset_id"  
-          - table_id: "tabla_vooxell"
+          - dataset_id: '${mi_dataset_inyectado}'
+          - table_id: '${mi_tabla_inyectada}'
           - ruta_archivo_gs: '${"gs://" + nombre_bucket + "/" + nombre_archivo}'
 
     - cargar_datos_a_bigquery:
