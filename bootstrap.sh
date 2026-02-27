@@ -21,7 +21,13 @@ echo "Iniciando preparación para el proyecto: $PROJECT_ID en $REGION"
 
 # Encender los interruptores (APIs) de Google Cloud
 echo "🔌 Habilitando APIs necesarias (esto puede tomar unos 10-20 segundos)..."
-gcloud services enable compute.googleapis.com --project=$PROJECT_ID
+gcloud services enable \
+  compute.googleapis.com \
+  workflows.googleapis.com \
+  eventarc.googleapis.com \
+  pubsub.googleapis.com \
+  dataform.googleapis.com \
+  --project=$PROJECT_ID
 
 # 3. Crear el bucket de estado si no existe
 if gcloud storage ls gs://$STATE_BUCKET_NAME --project=$PROJECT_ID >/dev/null 2>&1; then

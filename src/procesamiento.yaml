@@ -1,0 +1,31 @@
+main:
+  params: [event]
+  steps:
+    - variables_iniciales:
+        assign:
+          - nombre_archivo: '${event.data.name}'
+          - nombre_bucket: '${event.data.bucket}'
+          - project_id: '${sys.get_env("GOOGLE_CLOUD_PROJECT_ID")}'
+          - dataset_id: "tu_dataset_id"  
+          - table_id: "tabla_vooxell"
+          - ruta_archivo_gs: '${"gs://" + nombre_bucket + "/" + nombre_archivo}'
+
+    - cargar_datos_a_bigquery:
+        call: googleapis.bigquery.v2.jobs.insert
+        args:
+          projectId: '${project_id}'
+          body:
+            configuration:
+              load:
+                sourceUris: ['${ruta_archivo_gs}']
+                destinationTable:
+                  projectId: '${project_id}'
+                  datasetId: '${dataset_id}'
+                  tableId: '${table_id}'
+                sourceFormat: "CSV"
+                autodetect: true
+                writeDisposition: "WRITE_APPEND"
+        result: resultado_bq
+
+    - finalizar:
+        return: '${"¡Éxito! Archivo cargado. Job ID: " + resultado_bq.jobReference.jobId}'
