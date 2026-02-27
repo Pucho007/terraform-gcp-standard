@@ -27,6 +27,8 @@ gcloud services enable \
   eventarc.googleapis.com \
   pubsub.googleapis.com \
   dataform.googleapis.com \
+  iam.googleapis.com \
+  cloudresourcemanager.googleapis.com \
   --project=$PROJECT_ID
 
 # 3. Crear el bucket de estado si no existe
