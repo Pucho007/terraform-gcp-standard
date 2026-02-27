@@ -5,10 +5,17 @@ resource "google_service_account" "eventarc_sa" {
   project      = var.project_id
 }
 
-# Su único permiso: Invocador de Workflows
+# Permiso para invocador de Workflows
 resource "google_project_iam_member" "eventarc_invoker" {
   project = var.project_id
   role    = "roles/workflows.invoker"
+  member  = "serviceAccount:${google_service_account.eventarc_sa.email}"
+}
+
+# Permiso para ESCUCHAR los eventos del bucket
+resource "google_project_iam_member" "eventarc_receiver" {
+  project = var.project_id
+  role    = "roles/eventarc.eventReceiver"
   member  = "serviceAccount:${google_service_account.eventarc_sa.email}"
 }
 
@@ -34,6 +41,7 @@ resource "google_eventarc_trigger" "storage_trigger" {
   }
 
   depends_on = [
-    google_project_iam_member.eventarc_invoker
+    google_project_iam_member.eventarc_invoker,
+    google_project_iam_member.eventarc_receiver
   ]
 }
