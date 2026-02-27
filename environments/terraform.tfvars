@@ -14,9 +14,9 @@ dataset_name      = "dataset_terraform_test_8"
 
 # Variables para la Orquestación
 # Variables para Workflow
-workflow_name         = "flujo-procesamiento-vooxell_8"
-workflow_sa_id        = "robot-workflow-vooxell_8"
+workflow_name         = "flujo-procesamiento-vooxell-8"
+workflow_sa_id        = "robot-workflow-vooxell-8"
 
 # Variables para Eventarc
-eventarc_trigger_name = "trigger-archivos-bucket_8"
-eventarc_sa_id        = "robot-eventarc-vooxell_8"
+eventarc_trigger_name = "trigger-archivos-bucket-8"
+eventarc_sa_id        = "robot-eventarc-vooxell-8"
