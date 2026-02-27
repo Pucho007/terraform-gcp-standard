@@ -36,7 +36,7 @@ module "orquestacion_cliente" {
   eventarc_sa_id        = var.eventarc_sa_id
   
   #Variables que van hacia el yaml
-  dataset_id = var.dataset_name
+  dataset_name = var.dataset_name
   table_id   = var.table_id
 
   depends_on            = [module.almacenamiento_cliente] 
