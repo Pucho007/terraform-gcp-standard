@@ -31,7 +31,7 @@ resource "google_workflows_workflow" "flujo_vooxell" {
   
   # Variables usadas en el yaml
   source_contents = templatefile(var.workflow_yaml_path, {
-    mi_dataset_inyectado = var.dataset_id
+    mi_dataset_inyectado = var.dataset_name
     mi_tabla_inyectada   = var.table_id
   })
 
