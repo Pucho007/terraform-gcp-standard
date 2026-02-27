@@ -28,7 +28,6 @@ resource "google_workflows_workflow" "flujo_vooxell" {
   region          = var.region
   project         = var.project_id
   service_account = google_service_account.workflow_sa.email
-  source_contents = file(var.workflow_yaml_path) 
   
   # Variables usadas en el yaml
   source_contents = templatefile(var.workflow_yaml_path, {
