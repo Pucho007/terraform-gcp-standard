@@ -14,6 +14,9 @@ variable "app_bucket_name" {}
 # Dataset de Bigquery
 variable "dataset_name" {}
 
+# Tabla en Bigquery
+variable table_id" { type = string }
+
 # Variables para la Orquestación
 # Variables para Workflow
 variable "workflow_name" { type = string }

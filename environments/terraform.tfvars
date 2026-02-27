@@ -11,6 +11,8 @@ app_bucket_name   = "bucket-terraform-test-10"
 # Dataset de Bigquery (no usar guiones)
 dataset_name      = "dataset_terraform_test_10"
 
+# Tabla de Bigquery de destino
+table_id = "tabla_vooxell" 
 
 # Variables para la Orquestación
 # Variables para Workflow

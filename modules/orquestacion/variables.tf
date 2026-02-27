@@ -9,3 +9,13 @@ variable "workflow_sa_id" {}
 
 variable "eventarc_trigger_name" {}
 variable "eventarc_sa_id" {}
+
+variable "dataset_id" {
+  description = "El ID del dataset de BigQuery"
+  type        = string
+}
+
+variable "table_id" {
+  description = "El ID de la tabla de BigQuery"
+  type        = string
+}

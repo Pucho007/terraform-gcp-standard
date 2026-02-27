@@ -35,5 +35,9 @@ module "orquestacion_cliente" {
   eventarc_trigger_name = var.eventarc_trigger_name
   eventarc_sa_id        = var.eventarc_sa_id
   
+  #Variables que van hacia el yaml
+  dataset_id = var.dataset_name
+  table_id   = var.table_id
+
   depends_on            = [module.almacenamiento_cliente] 
 }
