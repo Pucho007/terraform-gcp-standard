@@ -27,7 +27,8 @@ main:
                   projectId: $${project_id}
                   datasetId: $${dataset_id}
                   tableId: $${table_id}
-                sourceFormat: "NEWLINE_DELIMITED_JSON" # (O CSV, según lo que uses)
+                # sourceFormat: "NEWLINE_DELIMITED_JSON" #
+                sourceFormat: "CSV" # 
                 autodetect: true
                 writeDisposition: "WRITE_APPEND"
           
