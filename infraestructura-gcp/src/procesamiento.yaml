@@ -19,16 +19,17 @@ main:
         call: googleapis.bigquery.v2.jobs.insert
         args:
           projectId: $${project_id}
-          configuration:
-            load:
-              sourceUris: ['$${ruta_archivo_gs}']
-              destinationTable:
-                projectId: $${project_id}
-                datasetId: $${dataset_id}
-                tableId: $${table_id}
-              sourceFormat: "NEWLINE_DELIMITED_JSON" # (O CSV, según lo que uses)
-              autodetect: true
-              writeDisposition: "WRITE_APPEND"
+          body:
+            configuration:
+              load:
+                sourceUris: ['$${ruta_archivo_gs}']
+                destinationTable:
+                  projectId: $${project_id}
+                  datasetId: $${dataset_id}
+                  tableId: $${table_id}
+                sourceFormat: "NEWLINE_DELIMITED_JSON" # (O CSV, según lo que uses)
+                autodetect: true
+                writeDisposition: "WRITE_APPEND"
           
     # DATAFORM
     - gatillar_dataform:
