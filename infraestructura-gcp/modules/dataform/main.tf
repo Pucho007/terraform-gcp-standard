@@ -1,5 +1,6 @@
 # 1. Crea el repositorio vacío
 resource "google_dataform_repository" "repo_vooxell" {
+  provider = google-beta
   project = var.project_id
   region  = var.region
   name    = var.repository_name
