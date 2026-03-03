@@ -13,3 +13,5 @@ variable "eventarc_sa_id" {}
 variable "dataset_name" {}
 
 variable "table_id" {}
+
+variable "dataform_repo_name" {}

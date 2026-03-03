@@ -1,0 +1,14 @@
+config {
+  type: "table",
+  name: "clientes_finales",
+  description: "Tabla ya limpia lista para analítica"
+}
+
+-- El query que transforma los datos
+SELECT 
+  id,
+  UPPER(nombre) AS nombre_mayuscula
+FROM 
+  `terraform-test-488010.dataset_transformado_vooxell_10.tabla_vooxell`
+WHERE 
+  id IS NOT NULL

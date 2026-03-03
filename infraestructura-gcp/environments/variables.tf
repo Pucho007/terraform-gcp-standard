@@ -14,6 +14,9 @@ variable "app_bucket_name" {}
 # Dataset de Bigquery
 variable "dataset_name" {}
 
+# Dataset de Bigquery (FINAL -DATAFORM)
+variable "dataset_destino_name" {}
+
 # Tabla en Bigquery
 variable "table_id" { type = string }
 
@@ -25,3 +28,7 @@ variable "workflow_sa_id" { type = string }
 # Variables para Eventarc
 variable "eventarc_trigger_name" { type = string }
 variable "eventarc_sa_id" { type = string }
+
+#Variables para Dataform
+variable "dataform_repo_name" { type = string }
+variable "dataform_sa_name" { type = string }

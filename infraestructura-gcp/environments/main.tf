@@ -18,6 +18,7 @@ module "datos_cliente" {
   project_id    = var.project_id
   region        = var.region
   dataset_name  = var.dataset_name
+  dataset_destino_name = var.dataset_destino_name
   common_labels = { environment = "prod", managed_by = "terraform" }
 }
 
@@ -40,4 +41,16 @@ module "orquestacion_cliente" {
   table_id   = var.table_id
 
   depends_on            = [module.almacenamiento_cliente] 
+
+  #Variables Dataform
+  dataform_repo_name = var.dataform_repo_name
+}
+
+# 6. Llamada al módulo de Dataform
+module "dataform_cliente" {
+  source             = "../modules/dataform"
+  project_id         = var.project_id
+  region             = var.region
+  repository_name    = var.dataform_repo_name
+  dataform_sa_name   = var.dataform_sa_name
 }

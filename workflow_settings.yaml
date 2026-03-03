@@ -1,0 +1,4 @@
+defaultProject: "terraform-test-488010"
+defaultDataset: "dataset_transformado_vooxell_10"
+defaultLocation: "us-central1"
+dataformCoreVersion: "3.0.0"
