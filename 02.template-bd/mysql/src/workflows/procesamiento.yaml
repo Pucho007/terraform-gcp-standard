@@ -1,0 +1,49 @@
+main:
+  steps:
+    - init:
+        assign:
+          # Terraform inyectará los valores reales aquí:
+          - project_id: "${project_id}"
+          - dataset_id: "${dataset_staging}"
+          - table_id: "${tabla}"
+          - bucket_csv: "${bucket_data}"
+          
+    - extraer_data_bd:
+        # Paso 1: Llamamos al Cloud Run Job para que extraiga la data y la deje en el Bucket
+        call: googleapis.run.v1.namespaces.jobs.run
+        args:
+          name: "namespaces/${project_id}/jobs/vooxell-job-db-extractor"
+          location: "${region}"
+        result: job_result
+
+    - cargar_csv_a_bigquery:
+        # Paso 2: Tomamos el CSV del bucket y lo metemos a la tabla Staging
+        call: googleapis.bigquery.v2.jobs.insert
+        args:
+          projectId: ${project_id}
+          body:
+            configuration:
+              load:
+                destinationTable:
+                  projectId: ${project_id}
+                  datasetId: ${dataset_id}
+                  tableId: ${table_id}  # <--- ¡AQUÍ SE DEFINE LA TABLA A GUARDAR!
+                sourceUris: 
+                  - "gs://${bucket_csv}/extraccion_db.csv"
+                sourceFormat: "CSV"
+                autodetect: true
+                writeDisposition: "WRITE_TRUNCATE" # Sobrescribe la tabla en cada carga
+
+    - limpiar_datos_nulos:
+        # Paso 3: Llamamos a la Cloud Function para que lea el JSON y limpie la tabla
+        call: http.post
+        args:
+          url: "https://${region}-${project_id}.cloudfunctions.net/vooxell-fn-calidad"
+          auth:
+            type: OIDC
+        result: function_result
+
+    - finalizar:
+        return: 
+          mensaje: "Flujo completado. Datos cargados en ${table_id} y limpiados."
+          resultado_limpieza: ${function_result.body}

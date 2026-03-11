@@ -1,0 +1,4 @@
+{
+  "tabla_destino": "vooxell_staging_db.tabla_clientes",
+  "columnas_no_nulas": ["id_cliente"]
+}
