@@ -29,7 +29,6 @@ module "extraccion" {
   project_id          = var.project_id
   repo_docker_name    = var.repo_docker_name
   job_extraccion_name = var.job_extraccion_name
-  db_host             = var.db_host
   sa_email            = module.iam.sa_email # Usamos el correo recién creado
 
   # Variables de conexión a la base de datos
