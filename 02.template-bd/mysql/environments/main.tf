@@ -36,6 +36,7 @@ module "extraccion" {
 
 module "calidad" {
   source                = "../modules/calidad"
+  project_id            = var.project_id
   region                = var.region
   function_calidad_name = var.function_calidad_name
   bucket_config_name    = var.bucket_config_name
