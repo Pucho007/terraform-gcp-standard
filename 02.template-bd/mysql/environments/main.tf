@@ -30,7 +30,6 @@ module "extraccion" {
   repo_docker_name    = var.repo_docker_name
   job_extraccion_name = var.job_extraccion_name
   db_host             = var.db_host
-  bucket_data_name    = var.bucket_data_name
   sa_email            = module.iam.sa_email # Usamos el correo recién creado
 
   # Variables de conexión a la base de datos
