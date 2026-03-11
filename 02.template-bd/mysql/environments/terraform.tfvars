@@ -5,7 +5,8 @@ region                 = "us-central1"
 state_bucket_name = "bucket-terraform-test-prueba"
 
 # IAM (Solo el nombre, Terraform creará el correo)
-sa_name                = "sa-vooxell-db-ingesta"
+sa_orquestacion_id = "sa-cliente-orquestacion"
+sa_extraccion_id   = "sa-cliente-extraccion"
 
 # Storage
 bucket_data_name       = "vooxell-data-cruda-db"

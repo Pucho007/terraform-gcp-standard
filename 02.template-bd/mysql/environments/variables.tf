@@ -5,8 +5,8 @@ variable "region" { type = string }
 variable "state_bucket_name" { type = string }
 
 # IAM 
-variable "sa_name" { type = string }
-
+variable "sa_orquestacion_id" { type = string }
+variable "sa_extraccion_id" { type = string }
 # Storage
 variable "bucket_data_name" { type = string }
 variable "bucket_config_name" { type = string }
