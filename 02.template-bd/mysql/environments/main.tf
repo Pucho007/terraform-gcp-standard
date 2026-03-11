@@ -51,4 +51,9 @@ module "orquestacion" {
   workflow_name  = var.workflow_name
   scheduler_name = var.scheduler_name
   sa_email       = module.iam.sa_email
+
+  #Variables del workflow
+  dataset_staging_name = var.dataset_staging_name
+  nombre_tabla         = var.nombre_tabla
+  bucket_data_name     = var.bucket_data_name
 }
