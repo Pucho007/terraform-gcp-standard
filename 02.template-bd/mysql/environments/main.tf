@@ -39,6 +39,9 @@ module "extraccion" {
   db_password         = var.db_password
   db_name             = var.db_name
   nombre_tabla        = var.nombre_tabla
+
+  # Pasamos el ID del reloj como una señal de dependencia
+  espera_id           = module.iam.reloj_iam_id
 }
 
 module "calidad" {

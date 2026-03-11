@@ -13,6 +13,7 @@ resource "null_resource" "build_y_subir_docker" {
   # que tiene que volver a construir y subir la imagen.
   triggers = {
     codigo_cambiado = sha1(join("", [for f in fileset("../src/extraccion", "**"): filesha1("../src/extraccion/${f}")]))
+    espera          = var.espera_id
   }
 
   provisioner "local-exec" {

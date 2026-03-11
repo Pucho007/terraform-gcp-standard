@@ -69,3 +69,14 @@ resource "google_project_iam_member" "build_artifact" {
   role    = "roles/artifactregistry.writer"
   member  = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
 }
+
+# Este recurso espera 30 segundos tras crear los permisos del "albañil"
+resource "time_sleep" "esperar_propagacion_iam" {
+  create_duration = "30s"
+
+  depends_on = [
+    google_project_iam_member.build_storage,
+    google_project_iam_member.build_artifact
+  ]
+}
+

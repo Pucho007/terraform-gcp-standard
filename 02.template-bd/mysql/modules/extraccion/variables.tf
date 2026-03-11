@@ -13,3 +13,5 @@ variable "db_password" {
 }
 variable "db_name" { type = string }
 variable "nombre_tabla" { type = string }
+
+variable espera_id { type = string }
