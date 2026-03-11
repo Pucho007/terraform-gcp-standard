@@ -12,13 +12,6 @@ resource "google_storage_bucket_object" "zip" {
   source = data.archive_file.codigo_zip.output_path # Apunta al zip generado
 }
 
-# 1. Las Cloud Functions necesitan guardar su código zip en un bucket
-resource "google_storage_bucket_object" "zip" {
-  name   = "codigo_funcion.zip"
-  bucket = var.bucket_config_name
-  content = "dummy content" # Para que Terraform no falle si no tienes el zip real aún
-}
-
 # 2. Creamos la Cloud Function v2
 resource "google_cloudfunctions2_function" "fn" {
   name     = var.function_calidad_name

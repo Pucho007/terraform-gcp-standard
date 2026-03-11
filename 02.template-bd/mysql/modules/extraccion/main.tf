@@ -43,12 +43,30 @@ resource "google_cloud_run_v2_job" "job" {
         image = "${var.region}-docker.pkg.dev/${var.project_id}/${var.repo_docker_name}/extractor:latest"
         
         # Inyectamos las variables
-        env { name = "DB_HOST", value = var.db_host }
-        env { name = "DB_USER", value = var.db_user }
-        env { name = "DB_PASS", value = var.db_password }
-        env { name = "DB_NAME", value = var.db_name }
-        env { name = "TABLA",   value = var.nombre_tabla }
-        env { name = "BUCKET",  value = var.bucket_data_name }
+        env { 
+          name  = "DB_HOST"
+          value = var.db_host 
+        }
+        env { 
+          name  = "DB_USER"
+          value = var.db_user 
+        }
+        env { 
+          name  = "DB_PASS"
+          value = var.db_password 
+        }
+        env { 
+          name  = "DB_NAME"
+          value = var.db_name 
+        }
+        env { 
+          name  = "TABLA"
+          value = var.nombre_tabla 
+        }
+        env { 
+          name  = "BUCKET"
+          value = var.bucket_data_name 
+        }
       }
     }
   }
