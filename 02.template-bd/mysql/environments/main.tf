@@ -32,6 +32,13 @@ module "extraccion" {
   db_host             = var.db_host
   bucket_data_name    = var.bucket_data_name
   sa_email            = module.iam.sa_email # Usamos el correo recién creado
+
+  # Variables de conexión a la base de datos
+  db_host             = var.db_host
+  db_user             = var.db_user
+  db_password         = var.db_password
+  db_name             = var.db_name
+  nombre_tabla        = var.nombre_tabla
 }
 
 module "calidad" {
