@@ -3,6 +3,7 @@ resource "google_storage_bucket" "data" {
   name          = var.bucket_data_name
   location      = var.region
   force_destroy = true
+  uniform_bucket_level_access = true
 }
 
 # 2. Bucket para la Configuración (Reglas de Calidad)
@@ -10,6 +11,7 @@ resource "google_storage_bucket" "config" {
   name          = var.bucket_config_name
   location      = var.region
   force_destroy = true
+  uniform_bucket_level_access = true
 }
 
 # 3. Subimos el archivo de reglas al bucket de configuración
