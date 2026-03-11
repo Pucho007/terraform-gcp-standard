@@ -29,7 +29,10 @@ variable "scheduler_name" { type = string }
 # Base de Datos
 variable "db_host" { type = string }
 variable "db_user" { type = string }
-variable "db_password" { type = string, sensitive = true }
+variable "db_password" {
+  type      = string
+  sensitive = true
+}
 variable "db_name" { type = string }
 
 # El nombre de la tabla destino en BigQuery

@@ -7,6 +7,9 @@ variable "sa_email" { type = string }
 
 variable "db_host" { type = string }
 variable "db_user" { type = string }
-variable "db_password" { type = string }
+variable "db_password" {
+  type      = string
+  sensitive = true
+}
 variable "db_name" { type = string }
 variable "nombre_tabla" { type = string }
