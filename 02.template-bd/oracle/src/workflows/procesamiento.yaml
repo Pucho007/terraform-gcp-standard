@@ -1,0 +1,44 @@
+main:
+  steps:
+    - extraer_data_bd:
+        # Paso 1: Llamamos al Cloud Run Job inyectando los datos desde Terraform
+        call: googleapis.run.v1.namespaces.jobs.run
+        args:
+          # AHORA ES DINÁMICO
+          name: "namespaces/${project_id}/jobs/${job_name}"
+          location: "${region}"
+        result: job_result
+
+    - cargar_csv_a_bigquery:
+        # Paso 2: Tomamos el CSV del bucket y lo metemos a la tabla Staging
+        call: googleapis.bigquery.v2.jobs.insert
+        args:
+          projectId: "${project_id}"
+          body:
+            configuration:
+              load:
+                destinationTable:
+                  projectId: "${project_id}"
+                  datasetId: "${dataset_staging}"
+                  tableId: "${tabla}"
+                sourceUris: 
+                  # AHORA ES DINÁMICO
+                  - "gs://${bucket_data}/${file_name}"
+                sourceFormat: "CSV"
+                autodetect: true
+                writeDisposition: "WRITE_TRUNCATE"
+
+    - limpiar_datos_nulos:
+        # Paso 3: Llamamos a la Cloud Function de Calidad
+        call: http.post
+        args:
+          # AHORA ES DINÁMICO
+          url: "https://${region}-${project_id}.cloudfunctions.net/${function_name}"
+          auth:
+            type: OIDC
+        result: function_result
+
+    - finalizar:
+        return: 
+          mensaje: "Flujo completado. Datos cargados en ${tabla} y limpiados."
+          resultado_limpieza: $${function_result.body}

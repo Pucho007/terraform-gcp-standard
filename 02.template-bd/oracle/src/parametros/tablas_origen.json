@@ -1,0 +1,26 @@
+[
+  {
+    "nombre_csv": "ubicaciones",
+    "query_extraccion": "SELECT id_ubicacion, ciudad, pais, region FROM RETAIL_DB.ubicaciones",
+    "bq_capa_staging": "stg_ubicaciones",
+    "bq_capa_final": "dim_ubicaciones"
+  },
+  {
+    "nombre_csv": "clientes",
+    "query_extraccion": "SELECT id_cliente, nombre, email, fecha_registro, id_ubicacion FROM RETAIL_DB.clientes",
+    "bq_capa_staging": "stg_clientes",
+    "bq_capa_final": "dim_clientes"
+  },
+  {
+    "nombre_csv": "productos",
+    "query_extraccion": "SELECT id_producto, nombre, categoria, precio_unitario FROM RETAIL_DB.productos",
+    "bq_capa_staging": "stg_productos",
+    "bq_capa_final": "dim_productos"
+  },
+  {
+    "nombre_csv": "transacciones",
+    "query_extraccion": "SELECT id_transaccion, id_cliente, id_producto, cantidad, total_venta, fecha_transaccion, metodo_pago FROM RETAIL_DB.transacciones WHERE fecha_transaccion >= TRUNC(SYSDATE) - 7",
+    "bq_capa_staging": "stg_transacciones",
+    "bq_capa_final": "fact_transacciones"
+  }
+]

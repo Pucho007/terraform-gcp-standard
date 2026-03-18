@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "defaults": {
+    "source": "still-lamp-268820.vooxell_staging_db_2",
+    "target": "still-lamp-268820.vooxell_prod_db_2",
+    "rejects": "still-lamp-268820.test_framework_dq.dq_row_rejections", 
+    "location": "us-central1",
+    "writeMode": "truncate",
+    "quality": {
+      "fullNull": true,
+      "fullDuplicate": true,
+      "treatBlankAsNull": true
+    }
+  },
+  "tables": {
+    "test_raw": {
+      "source": "transacciones_clientes",
+      "target": "transacciones_clientes_validado"
+    }
+  }
+}
