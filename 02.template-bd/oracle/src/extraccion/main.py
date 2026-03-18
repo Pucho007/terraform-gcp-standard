@@ -42,5 +42,6 @@
 
 #     print(f"Archivo subido exitosamente a gs://{bucket_name}/{nombre_archivo}")
 
-# if __name__ == "__main__":
-#     extraer_datos()
+if __name__ == "__main__":
+    print("Logica pendiente. Solo se ha desplegado el workflow correctamente.")
+    # extraer_datos()

@@ -1,3 +1,7 @@
+main:
+  steps:
+    - inicio:
+        return: "Workflow desplegado correctamente. Lógica pendiente."
 # main:
 #   steps:
 #     - extraer_data_bd:
