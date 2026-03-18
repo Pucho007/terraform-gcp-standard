@@ -9,12 +9,10 @@ resource "google_workflows_workflow" "wf" {
     project_id      = var.project_id
     region          = var.region
     dataset_staging = var.dataset_staging_name
-    # tabla           = var.nombre_tabla
     bucket_data     = var.bucket_data_name
 
     job_name        = var.job_extraccion_name
     function_name   = var.function_calidad_name
-    # file_name       = var.nombre_archivo_csv
   })
 }
 
